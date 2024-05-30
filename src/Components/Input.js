@@ -14,6 +14,14 @@ const Input = () => {
       setUser(true);
     },
   });
+
+  const handleChange = (e) => {
+    if (e.target.name === "image") {
+      setUserInfo({ ...userInfo, [e.target.name]: e.target.files[0] });
+    } else {
+      setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate();
@@ -24,6 +32,8 @@ const Input = () => {
         <div className="py-3">username</div>
         <input
           type="text"
+          name="username"
+          onChange={handleChange}
           placeholder="username"
           className="rounded-md px-1 w-full  border-solid border-2 border-black opacity-50"
         />
@@ -34,6 +44,8 @@ const Input = () => {
           <div>Password</div>
         </div>
         <input
+          name="password"
+          onChange={handleChange}
           type="password"
           id="password"
           placeholder="Password"
