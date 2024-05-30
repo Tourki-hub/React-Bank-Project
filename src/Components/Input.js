@@ -31,19 +31,20 @@ const Input = () => {
 
       <div className="py-3">
         <div className="py-3 flex gap-40">
-          <div>Password forget</div>
+          <div>Password</div>
         </div>
         <input
-          type="text"
+          type="password"
+          id="password"
           placeholder="Password"
           className="rounded-md px-1 w-full border-solid border-2 border-black opacity-50"
         />
         <div>Forget Password?</div>
       </div>
 
-      <div className=" border-solid border-2 border-gray-400 w-20 rounded-md flex items-center justify-center">
+      <div className=" border-none  rounded-md flex items-center justify-center">
         <button
-          className=" bg-green-600 w-full border-none flex justify-center items-center"
+          className=" bg-green-600  rounded-md w-full h-full flex justify-center items-center border-none"
           onClick={handleSubmit}
         >
           LogIn
