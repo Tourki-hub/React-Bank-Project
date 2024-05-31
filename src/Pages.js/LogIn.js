@@ -2,13 +2,14 @@ import Input from "../Components/Input";
 import Welcoming from "../Components/Welcoming";
 import { useState, React } from "react";
 import bankLogo from "../ecoBankImage.webp";
+import Logo from "../Components/Logo";
 
 const LogIn = () => {
   return (
     <div className="h-full flex">
       <div>
         <div>
-          {" "}
+          <Logo />
           <img src={bankLogo} className="w-full h-full" />
         </div>
       </div>

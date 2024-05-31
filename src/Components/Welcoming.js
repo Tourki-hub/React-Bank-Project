@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Router } from "react-router-dom";
 
 const Welcoming = () => {
   return (
@@ -9,9 +10,9 @@ const Welcoming = () => {
       <div className="py-4">
         {" "}
         If you don't have account please, Register{" "}
-        <a className="text-blue-600 underline" href="">
+        <Link to="/register" className="text-blue-600 underline">
           here
-        </a>
+        </Link>
       </div>
     </div>
   );

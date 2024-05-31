@@ -3,7 +3,7 @@ import Welcoming from "../Components/Welcoming";
 import { useState, React, useContext } from "react";
 import bankLogo from "../ecoBankImage.webp";
 import { Link, useNavigate } from "react-router-dom";
-
+import Logo from "../Components/Logo";
 import { useMutation } from "@tanstack/react-query";
 import { createContext } from "react";
 import UserContext from "../Context.js/context";
@@ -30,7 +30,7 @@ const Register = () => {
     },
     onSuccess: () => {
       setUser(true);
-      nav("/login");
+      nav("/");
     },
   });
   const handleFormSubmit = (e) => {
@@ -43,7 +43,7 @@ const Register = () => {
     <div className="h-full flex ">
       <div>
         <div>
-          {" "}
+          <Logo />
           <img src={bankLogo} className="w-full h-full" />
         </div>
       </div>
@@ -56,7 +56,7 @@ const Register = () => {
             <div className="py-4">
               {" "}
               If you do have an account please,
-              <Link className="text-blue-600 underline" to="/login">
+              <Link className="text-blue-600 underline" to="/">
                 Login here
               </Link>
             </div>

@@ -3,15 +3,18 @@ import { useMutation } from "@tanstack/react-query";
 import UserContext from "../Context.js/context";
 import LogIn from "../Pages.js/LogIn";
 import { login } from "../api/auth";
+import { Link, useNavigate } from "react-router-dom";
 
 const Input = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(UserContext);
+  const nav = useNavigate();
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: () => login(userInfo),
     onSuccess: () => {
       setUser(true);
+      nav("/Home");
     },
   });
 
@@ -59,7 +62,7 @@ const Input = () => {
           className=" bg-green-600  rounded-md w-full h-full flex justify-center items-center border-none"
           onClick={handleSubmit}
         >
-          LogIn
+          <Link to="/Home"> login</Link>
         </button>
       </div>
     </div>
