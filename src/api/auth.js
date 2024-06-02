@@ -1,5 +1,5 @@
 import instance from ".";
-import { storeToken } from "./storage";
+import { removeToken, storeToken } from "./storage";
 
 const login = async (userInfo) => {
   const { data } = await instance.post(
@@ -20,6 +20,6 @@ const register = async (userInfo) => {
   return data;
 };
 const logout = () => {
-  localStorage.removeItem("token");
+  removeToken();
 };
 export { login, register, logout };
