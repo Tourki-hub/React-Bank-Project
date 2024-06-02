@@ -19,4 +19,7 @@ const register = async (userInfo) => {
   storeToken(data.token);
   return data;
 };
-export { login, register };
+const logout = () => {
+  localStorage.removeItem("token");
+};
+export { login, register, logout };
