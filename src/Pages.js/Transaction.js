@@ -48,19 +48,19 @@ const Transaction = () => {
           Transfare
         </div>
       </div>
-      <div className="flex justify-center items-center h-full bg-[#F7F8F1]">
-        <div className="  border-solid border-2 border-black flex justify-center items-center w-full h-full">
-          <div className="w-full flex flex-col items-center justify-center">
+      <div className="flex justify-center items-center h-full bg-[#F7F8F1] ">
+        <div className="  border-solid border-2 border-black flex justify-center items-center w-full h-full overflow-scroll">
+          <div className="w-full flex flex-col items-center justify-center ">
             {transactions?.map((transact) => {
-              <div key={transact._id}>
-                {transact._id}
-                {transact.type}
-                {transact.amount}
-                {transact.from}
-                {transact.to}
-                {transact.createdAt}
-                {transact.updatedAt}
-              </div>;
+              return (
+                <div key={transact._id}>
+                  {transact.type}
+                  {transact.amount}
+
+                  {transact.createdAt}
+                  {transact.updatedAt}
+                </div>
+              );
             })}
           </div>
         </div>

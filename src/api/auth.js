@@ -22,4 +22,5 @@ const register = async (userInfo) => {
 const logout = () => {
   removeToken();
 };
+
 export { login, register, logout };

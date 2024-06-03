@@ -1,26 +1,36 @@
 import { useState } from "react";
 import NavBar from "../Components/NavBar";
 import { deposit } from "../api/Money";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { withdraw } from "../api/Money";
+import { balance } from "../api/Money";
 
 const Home = () => {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState(0);
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
-  const { mutate } = useMutation({
+  //const { data, refetch } = useQuery({
+  //queryKey: ["me"],
+  //queryFn: () => me(),
+  //});
+  const { mutate: depositMutate } = useMutation({
     mutationKey: ["deposit"],
     mutationFn: () => deposit(amount),
+    onSuccess: () => {
+      // queryclint
+      //refetch(); //علشان يسوي رفرش لما تنجح العملية
+    },
   });
-  const handleDeposit = () => {
-    mutate();
-  };
 
-  const { mutate2 } = useMutation({
+  const { mutate: withdrawMutate } = useMutation({
     mutationKey: ["withdraw"],
     mutationFn: () => withdraw(amount),
+    onSuccess: () => {
+      //refetch();
+    },
   });
+
   return (
     <div className="w-full h-full">
       <div>
@@ -29,7 +39,7 @@ const Home = () => {
 
       <div className="  bg-[#F7F8F1] w-full h-full flex justify-center items-center gap-10 flex-col overflow-y-auto ">
         <div className="border-solid bg-gray-200 w-[370px] h-[300px] flex justify-center items-end shadow-2xl rounded-lg">
-          <div> Balance : {amount}</div>
+          {/*<div> Balance : {data?.balance} </div>*/}
         </div>
         <div className="border-solid bg-gray-200 w-[370px] h-[300px] flex justify-center items-center py-5 shadow-2xl rounded-lg gap-5 flex-col">
           <div className="gap-2">
@@ -49,7 +59,7 @@ const Home = () => {
             <div className="flex justify-center items-center gap-3 py-5">
               <div>
                 <button
-                  onClick={handleDeposit}
+                  onClick={depositMutate}
                   className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg border-solid  border-gray-400 bg-gray-300 h-8 flex justify-center items-center"
                 >
                   Deposit
@@ -57,7 +67,7 @@ const Home = () => {
               </div>
               <div>
                 <button
-                  onClick={mutate2}
+                  onClick={withdrawMutate}
                   className="px-4 py-2 text-sm font-medium text-black hover:bg-red-500 focus:relative rounded-lg border-solid  border-gray-400 bg-gray-300 h-8 flex justify-center items-center"
                 >
                   withdraw
