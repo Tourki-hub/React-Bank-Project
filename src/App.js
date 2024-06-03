@@ -8,6 +8,7 @@ import Home from "./Pages.js/Home";
 import Transaction from "./Pages.js/Transaction";
 import { getToken } from "./api/storage";
 import Profile from "./Pages.js/Profile";
+import Users from "./Pages.js/Users";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/register" Component={Register} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/profile" Component={Profile} />
+          <Route path="/users" Component={Users} />
         </Routes>
       </div>
     </UserContext.Provider>

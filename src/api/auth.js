@@ -29,5 +29,8 @@ const me = async () => {
 const logout = () => {
   removeToken();
 };
-
-export { login, register, logout, me };
+const getAllUsers = async () => {
+  const { data } = await instance.get("/mini-project/api/auth/users");
+  return data;
+};
+export { login, register, logout, me, getAllUsers };
