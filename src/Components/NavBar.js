@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -28,7 +29,7 @@ const NavBar = () => {
           </div>
           <div className="p-3">
             <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-700 focus:relative rounded-lg">
-              profile
+              <Link to="/Profile">profile </Link>
             </button>
           </div>
         </div>

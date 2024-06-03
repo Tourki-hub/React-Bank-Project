@@ -6,12 +6,14 @@ import Register from "./Pages.js/Register";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages.js/Home";
 import Transaction from "./Pages.js/Transaction";
+import { getToken } from "./api/storage";
+import Profile from "./Pages.js/Profile";
 
 function App() {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (getToken()) {
       setUser(true);
     }
   }, []);
@@ -25,6 +27,7 @@ function App() {
           <Route path="/" Component={LogIn} />
           <Route path="/register" Component={Register} />
           <Route path="/transaction" Component={Transaction} />
+          <Route path="/profile" Component={Profile} />
         </Routes>
       </div>
     </UserContext.Provider>
