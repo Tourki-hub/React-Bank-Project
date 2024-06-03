@@ -36,8 +36,7 @@ const NavBar = () => {
           </div>
           <div className="p-3">
             <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-700 focus:relative rounded-lg">
-              {" "}
-              users{" "}
+              <Link to="/users"> users</Link>
             </button>
           </div>
           <div className="p-3">
