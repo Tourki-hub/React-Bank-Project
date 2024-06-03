@@ -6,10 +6,9 @@ import { getAllTransactions } from "../api/Money";
 
 const Transaction = () => {
   const { data: transactions } = useQuery({
-    queryKey: ["transactions"],
+    queryKey: ["Transactions"],
     queryFn: getAllTransactions,
   });
-
   return (
     <div className=" bg-[#F7F8F1] w-full h-full  flex-col">
       <div>
@@ -51,8 +50,18 @@ const Transaction = () => {
       </div>
       <div className="flex justify-center items-center h-full bg-[#F7F8F1]">
         <div className="  border-solid border-2 border-black flex justify-center items-center w-full h-full">
-          <div className="w-full flex flex-col items-center">
-            {transactions}
+          <div className="w-full flex flex-col items-center justify-center">
+            {transactions?.map((transact) => {
+              <div key={transact._id}>
+                {transact._id}
+                {transact.type}
+                {transact.amount}
+                {transact.from}
+                {transact.to}
+                {transact.createdAt}
+                {transact.updatedAt}
+              </div>;
+            })}
           </div>
         </div>
       </div>

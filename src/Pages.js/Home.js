@@ -13,6 +13,9 @@ const Home = () => {
     mutationKey: ["deposit"],
     mutationFn: () => deposit(amount),
   });
+  const handleDeposit = () => {
+    mutate();
+  };
 
   const { mutate2 } = useMutation({
     mutationKey: ["withdraw"],
@@ -32,10 +35,7 @@ const Home = () => {
           <div className="gap-2">
             Amount:
             <div className="gap-2">
-              <label
-                htmlFor="Username"
-                className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-              >
+              <label className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                 <input
                   onChange={handleChange}
                   type="text"
@@ -46,21 +46,23 @@ const Home = () => {
                 />
               </label>
             </div>
-            <div>
-              <button
-                onClick={mutate}
-                className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg border-solid  border-gray-400 bg-gray-300 h-8 flex justify-center items-center"
-              >
-                Deposit
-              </button>
-            </div>
-            <div>
-              <button
-                onClick={mutate2}
-                className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg border-solid  border-gray-400 bg-gray-300 h-8 flex justify-center items-center"
-              >
-                withdraw
-              </button>
+            <div className="flex justify-center items-center gap-3 py-5">
+              <div>
+                <button
+                  onClick={handleDeposit}
+                  className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg border-solid  border-gray-400 bg-gray-300 h-8 flex justify-center items-center"
+                >
+                  Deposit
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={mutate2}
+                  className="px-4 py-2 text-sm font-medium text-black hover:bg-red-500 focus:relative rounded-lg border-solid  border-gray-400 bg-gray-300 h-8 flex justify-center items-center"
+                >
+                  withdraw
+                </button>
+              </div>
             </div>
           </div>
         </div>
