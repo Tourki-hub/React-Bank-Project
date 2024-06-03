@@ -4,22 +4,23 @@ import { deposit } from "../api/Money";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { withdraw } from "../api/Money";
 import { balance } from "../api/Money";
+import { me } from "../api/auth";
 
 const Home = () => {
   const [amount, setAmount] = useState(0);
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
-  //const { data, refetch } = useQuery({
-  //queryKey: ["me"],
-  //queryFn: () => me(),
-  //});
+  const { data, refetch } = useQuery({
+    queryKey: ["me"],
+    queryFn: () => me(),
+  });
   const { mutate: depositMutate } = useMutation({
     mutationKey: ["deposit"],
     mutationFn: () => deposit(amount),
     onSuccess: () => {
       // queryclint
-      //refetch(); //علشان يسوي رفرش لما تنجح العملية
+      refetch(); //علشان يسوي رفرش لما تنجح العملية
     },
   });
 
@@ -27,7 +28,7 @@ const Home = () => {
     mutationKey: ["withdraw"],
     mutationFn: () => withdraw(amount),
     onSuccess: () => {
-      //refetch();
+      refetch();
     },
   });
 
@@ -39,7 +40,7 @@ const Home = () => {
 
       <div className="  bg-[#F7F8F1] w-full h-full flex justify-center items-center gap-10 flex-col overflow-y-auto ">
         <div className="border-solid bg-gray-200 w-[370px] h-[300px] flex justify-center items-end shadow-2xl rounded-lg">
-          {/*<div> Balance : {data?.balance} </div>*/}
+          <div> Balance : {data?.balance} </div>
         </div>
         <div className="border-solid bg-gray-200 w-[370px] h-[300px] flex justify-center items-center py-5 shadow-2xl rounded-lg gap-5 flex-col">
           <div className="gap-2">
