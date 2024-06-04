@@ -25,22 +25,22 @@ const NavBar = () => {
       <div className="h-full w-full flex justify-center items-center">
         <div className=" flex w-53 h-12 items-center justify-evenly">
           <div className=" p-3">
-            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-700  focus:relative rounded-lg">
+            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500  focus:relative rounded-lg">
               <Link to="/Home"> Home</Link>
             </button>
           </div>
           <div className="p-3">
-            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-700  focus:relative rounded-lg">
+            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg">
               <Link to="/transaction"> transaction </Link>
             </button>
           </div>
           <div className="p-3">
-            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-700 focus:relative rounded-lg">
+            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg">
               <Link to="/users"> users</Link>
             </button>
           </div>
           <div className="p-3">
-            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-700 focus:relative rounded-lg">
+            <button className="px-4 py-2 text-sm font-medium text-black hover:bg-green-500 focus:relative rounded-lg">
               <Link to="/Profile">profile </Link>
             </button>
           </div>

@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../Components/NavBar";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getAllTransactions } from "../api/Money";
+import FilterOptions from "../Components/FilterOptions";
 
 const Transaction = () => {
+  const [filteredTransactions, setfilteredTransactions] = useState([]);
+  const handleFilterChange = (type) => {
+    const filtered = transactions?.filter((transact) =>
+      transact?.type?.includes(type)
+    );
+    setfilteredTransactions(filtered);
+  };
   const { data: transactions } = useQuery({
     queryKey: ["Transactions"],
     queryFn: getAllTransactions,
   });
+  useEffect(() => {
+    setfilteredTransactions(transactions);
+  }, [transactions]);
+
+  const [query, setquery] = useState("");
+  const handleChange = (e) => {
+    setquery(e.target.value);
+  };
+
   return (
     <div className=" bg-[#F7F8F1] w-full h-full  flex-col">
       <div>
@@ -19,10 +36,10 @@ const Transaction = () => {
           type="search"
           placeholder="search"
           className="input input-bordered input-sm w-full max-w-md"
+          onChange={handleChange}
         />
-        <div className=" w-full gap-4 flex justify-center items-center">
-          <div className="font-semibold">Filter:</div>
-          <input
+        <div className=" w-full  flex justify-center items-center">
+          {/*<input
             type="radio"
             name="filter"
             defaultChecked
@@ -33,21 +50,18 @@ const Transaction = () => {
           Deposit
           <input type="radio" name="filter" className="checkbox checkbox-xs" />
           Withdraw
-          <input
-            type="checkbox"
-            name="filter"
-            className="checkbox checkbox-xs"
-          />
-          Transfare
+          <input type="radio" name="filter" className="checkbox checkbox-xs" />
+          Transfare*/}
+          <FilterOptions onChange={handleFilterChange} />
         </div>
       </div>
-      <div className="flex justify-center items-center h-full bg-[#F7F8F1] ">
-        <div className="  border-solid border-2 border-black flex justify-center items-center w-full h-full overflow-scroll">
+      <div className="h-full bg-[#F7F8F1] ">
+        <div className="  border-solid border-2 border-black flex justify-center items-center w-full min-h-full">
           <div className="w-full flex flex-col items-center justify-center ">
-            {transactions?.map((transact) => {
+            {filteredTransactions?.map((transact) => {
               return (
                 <div
-                  className="flex justify-center items-center py-6 px-5"
+                  className="flex justify-center items-center py-1 px-5"
                   key={transact._id}
                 >
                   <div className="card w-200 bg-base-100 shadow-xl flex ">

@@ -20,7 +20,7 @@ const Profile = () => {
         <NavBar />
       </div>
       <div className=" bg-[#F7F8F1] flex items-center justify-center w-full h-full">
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="border-solid bg-[#e0e6b8] w-[370px] h-[500px] flex justify-center items-center shadow-2xl rounded-lg flex-col gap-10">
           <figure className="px-10 pt-10">
             <img
               src={
@@ -30,15 +30,12 @@ const Profile = () => {
               className="rounded-xl"
             />
           </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title"></h2>
-            <p>{data?.username}</p>
-            <div className="card-actions"></div>
-            <div>{data?.balance}</div>
+          <div className=" flex flex-col justify-center items-center text-center">
+            <p className="font-semibold">{data?.username}</p>
+
+            <div className="text-[20px]"> Balance is: {data?.balance}</div>
           </div>
         </div>
-
-        <div></div>
       </div>
     </div>
   );

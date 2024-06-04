@@ -62,7 +62,7 @@ const Input = () => {
           className=" bg-green-600  rounded-md w-full h-full flex justify-center items-center border-none"
           onClick={handleSubmit}
         >
-          <Link to="/Home"> login</Link>
+          login
         </button>
       </div>
     </div>
