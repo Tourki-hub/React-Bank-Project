@@ -58,23 +58,35 @@ const Transaction = () => {
       <div className="h-full bg-[#F7F8F1] ">
         <div className="  border-solid border-2 border-black flex justify-center items-center w-full min-h-full">
           <div className="w-full flex flex-col items-center justify-center ">
-            {filteredTransactions?.map((transact) => {
-              return (
-                <div
-                  className="flex justify-center items-center py-1 px-5"
-                  key={transact._id}
-                >
-                  <div className="card w-200 bg-base-100 shadow-xl flex ">
-                    <tr key={transact._id}>
-                      <td className="border px-5 py-3">{transact.type}</td>
-                      <td className="border px-4 py-2">{transact.amount}</td>
-                      <td className="border px-4 py-2">{transact.createdAt}</td>
-                      <td className="border px-4 py-2">{transact.updatedAt}</td>
-                    </tr>
+            {filteredTransactions
+              ?.filter((tran) => {
+                if (tran?.amount?.toString().includes(query)) {
+                  return true;
+                } else {
+                  return false;
+                }
+              })
+              .map((transact) => {
+                return (
+                  <div
+                    className="flex justify-center items-center py-1 px-5"
+                    key={transact._id}
+                  >
+                    <div className="card w-200 bg-base-100 shadow-xl flex ">
+                      <tr key={transact._id}>
+                        <td className="border px-5 py-3">{transact.type}</td>
+                        <td className="border px-4 py-2">{transact.amount}</td>
+                        <td className="border px-4 py-2">
+                          {transact.createdAt}
+                        </td>
+                        <td className="border px-4 py-2">
+                          {transact.updatedAt}
+                        </td>
+                      </tr>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </div>
